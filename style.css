@@ -1,0 +1,101 @@
+/* Базовые настройки - убираем отступы */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Чтобы не было горизонтальной прокрутки */
+    background-color: #1a1a1a; /* Черный фон на случай медленного интернета */
+}
+
+/* Настройка экранов (блоков) */
+.screen {
+    width: 100%;
+    min-height: 100vh; /* Каждый блок на весь экран */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Чтобы элементы внутри позиционировались относительно блока */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ПОДКЛЮЧАЕМ ТВОИ КАРТИНКИ ФОНА */
+.screen-1 { background-image: url('bg1.jpg'); }
+.screen-2 { background-image: url('bg2.jpg'); }
+.screen-3 { background-image: url('bg3.jpg'); }
+
+/* СТИЛИ ДЛЯ ТЕКСТА "ЧЕ?" */
+.text-big {
+    font-size: 20vw; /* Огромный размер */
+    color: white;
+    font-family: sans-serif;
+    font-weight: 900;
+    mix-blend-mode: screen; /* Эффект свечения/вычитания */
+    animation: pulse 2s infinite; /* Пульсация */
+}
+
+/* АНИМАЦИЯ КНИГ (Летают вверх-вниз) */
+.float-book {
+    position: absolute;
+    width: 150px; /* Подбери размер под свои картинки */
+    opacity: 0.9;
+}
+
+.book-1 {
+    top: 20%;
+    left: 10%;
+    animation: float 4s ease-in-out infinite;
+}
+
+.book-2 {
+    top: 60%;
+    right: 15%;
+    width: 200px;
+    animation: float 5s ease-in-out infinite reverse; /* reverse - в другую сторону */
+}
+
+/* АНИМАЦИЯ ЗАКЛАДКИ (Бегает влево-вправо) */
+.bookmark {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    animation: runBookmark 3s linear infinite;
+}
+
+/* ОЧКИ */
+.glasses {
+    font-size: 100px;
+    filter: drop-shadow(0 0 10px red); /* Красное свечение */
+    animation: spin 10s linear infinite; /* Медленное вращение */
+}
+
+/* --- КЛЮЧЕВЫЕ КАДРЫ АНИМАЦИИ --- */
+
+/* Левитация книг */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Бег закладки */
+@keyframes runBookmark {
+    0% { left: 0%; }
+    50% { left: 100%; }
+    100% { left: 0%; }
+}
+
+/* Пульсация текста */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Вращение очков */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
